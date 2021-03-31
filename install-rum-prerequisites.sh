@@ -182,16 +182,8 @@ installBankCustomerRUMWorkshop() {
   clone_the_repo=true
 
   docker_install=true
-  dynatrace_install_oneagent=true
-
-  download_Jmeter=true
-
-  install_start_bank_docker=true
-  download_jenkins_image=true
-
-  install_start_ansible_tower_docker=true
   create_workshop_user=true
-  install_docker_compose=true
+  docker_compose_install=true
 }
 
 

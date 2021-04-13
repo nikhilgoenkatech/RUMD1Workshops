@@ -5,6 +5,7 @@ MAINTAINER Nikhil Goenka "dynatraceone@dynatrace.com"
 # Update aptitude with new repo
 RUN apt-get update
 
+ENV releaseid="1.1"
 # Install software 
 RUN apt-get install -y git
 

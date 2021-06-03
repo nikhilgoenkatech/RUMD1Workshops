@@ -1,29 +1,19 @@
-version: '3'
-services:
-  app_1:
-    container_name: sample-bank
-    restart: always
-    image: app:2.1.0
-    ports:
-      - '3000:3000'
-    external_links:
-      - mongo
-    depends_on:
-      - mongo
-  app_2:
-    container_name: sample-bank-2
-    restart: always
-    image: app:4.1.0
-    ports:
-      - '3005:3000'
-    external_links:
-      - mongo
-    depends_on:
-      - mongo
-  mongo:
-    container_name: mongo
-    image: mongo
-    ports:
-      - '27017:27017'
-    volumes:
-      - './dev/data/db:/data/db'
+FROM node:10
+
+MAINTAINER Nikhil Goenka "dynatraceone@dynatrace.com"
+
+# Update aptitude with new repo
+RUN apt-get update
+
+ENV DT_RELEASE_VERSION=${DT_RELEASE_VERSION}
+ENV releaseid="1.1"
+# Install software 
+RUN apt-get install -y git
+
+RUN git clone https://github.com/nikhilgoenkatech/docker-compose-sample-bankApp.git
+WORKDIR /docker-compose-sample-bankApp/
+
+RUN npm install
+EXPOSE 3000
+
+CMD ["npm","start"]

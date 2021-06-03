@@ -6,6 +6,7 @@ MAINTAINER Nikhil Goenka "dynatraceone@dynatrace.com"
 RUN apt-get update
 
 ENV DT_RELEASE_VERSION=${DT_RELEASE_VERSION}
+ENV releaseid="1.1"
 # Install software 
 RUN apt-get install -y git
 

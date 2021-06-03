@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app_1:
+    container_name: sample-bank
+    restart: always
+    image: app:2.1.0
+    ports:
+      - '3000:3000'
+    external_links:
+      - mongo
+    depends_on:
+      - mongo
+  app_2:
+    container_name: sample-bank-2
+    restart: always
+    image: app:4.1.0
+    ports:
+      - '3005:3000'
+    external_links:
+      - mongo
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - './dev/data/db:/data/db'

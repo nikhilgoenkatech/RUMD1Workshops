@@ -1,15 +1,32 @@
 version: '3'
 services:
-  app:
+  app_1:
     container_name: sample-bank
     restart: always
     build:
-     context: .
-     args:
-      - DT_RELEASE_VERSION=${DT_RELEASE_VERSION}
+      dockerfile: Dockerfile_sample-bank
+      context: .
+      args:
+       - DT_RELEASE_VERSION=${DT_RELEASE_VERSION}
     ports:
-      - '3000:3000'
+      - '3010:3000'
     external_links:
+      - mongo
+    depends_on:
+      - mongo
+  app_2:
+    container_name: sample-bank-4
+    restart: always
+    build:
+      dockerfile: Dockerfile_sample-bank_latest
+      context: .
+      args:
+       - BUILD_NO=${BUILD_NO}
+    ports:
+      - '3008:3000'
+    external_links:
+      - mongo
+    depends_on:
       - mongo
   mongo:
     container_name: mongo

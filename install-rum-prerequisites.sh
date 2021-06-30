@@ -1,6 +1,9 @@
 RUMD1WRKSHP_REPO="https://github.com/nikhilgoenkatech/RUMD1Workshops.git"
 RUMD1WRKSHP_DIR="~/docker-compose-bankApp"
 
+RETAILAPP_REPO="https://github.com/nikhilgoenkatech/retailapp.git"
+RETAILAPP_DIR="~/e-commerce"
+
 dockerInstall() {
   if [ "$docker_install" = true ]; then
     printInfoSection "Installing Docker and J Query"
@@ -137,6 +140,9 @@ resources_clone(){
   if [ "$clone_the_repo" = true ]; then
     printInfoSection "Clone RUMD1Workshop Resources in $RUMD1WRKSHP_DIR"
     bashas "sudo git clone $RUMD1WRKSHP_REPO $RUMD1WRKSHP_DIR"
+    
+    printInfoSection "Clone RETAILAPP_REPO Resources in $RETAILAPP_DIR"
+    bashas "sudo git clone $RETAILAPP_REPO $RETAILAPP_DIR"
   fi
 }
 createWorkshopUser() {

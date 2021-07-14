@@ -40,7 +40,7 @@ downloadStandAloneSetup() {
     usermod -a -G docker $USER
 
     printInfo "Install npm"
-    apt install npm
+    apt install npm -y
   fi
 }
 

@@ -16,6 +16,35 @@ dockerInstall() {
   fi
 }
 
+downloadStandAloneSetup() {
+  if [ "$standalone_deployment" = true ]; then
+    printInfoSection "Installing Standalone pre-requisites"
+    apt install python3-pip
+    apt  install nginx
+    apt install gunicorn 
+    apt-get remove libapache2-mod-python libapache2-mod-wsgi
+    apt-get install libapache2-mod-wsgi-py3
+    bashas "pip3 install uwsgi"
+
+    bashas "pip3 install gunicorn==19.7.1"
+    bashas "pip3 install autodynatrace"
+    bashas "pip3 uninstall Django -y"
+    bashas "pip3 install Django=2.2.10"
+
+    bashas "cd /home/ubuntu/e-commerce"
+    bashas "cp nginx.default /etc/nginx/sites-enabled/"
+    bashas "pip3 install -r requirements.txt"
+
+    printInfo "Install Docker"
+    apt install docker.io -y
+    service docker start
+    usermod -a -G docker $USER
+
+    printInfo "Install npm"
+    apt install npm
+  fi
+}
+
 dockerComposeInstall() {
   if [ "$docker_compose_install" = true ]; then
     printInfoSection "Installing Docker-Compose"
@@ -192,6 +221,14 @@ installBankCustomerRUMWorkshop() {
   docker_compose_install=true
 }
 
+installBankCustomerRUMWorkshopStandalone() {
+  update_ubuntu=true
+  setup_proaliases=true
+  clone_the_repo=true
+
+  create_workshop_user=true
+  standalone_deployment=true
+}
 
 # ======================================================================
 #            ---- The Installation function -----                      #
@@ -222,5 +259,6 @@ installSetup() {
   downloadJenkinsDocker
   
   downloadStartAnsibleTower
+  downloadStandAloneSetup
 }
 

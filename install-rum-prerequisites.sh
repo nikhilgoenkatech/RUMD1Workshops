@@ -29,11 +29,10 @@ downloadStandAloneSetup() {
     bashas "pip3 install gunicorn==19.7.1"
     bashas "pip3 install autodynatrace"
     bashas "pip3 uninstall Django -y"
-    bashas "pip3 install Django=2.2.10"
+    bashas "pip3 install Django==2.2.10"
 
-    bashas "cd /home/ubuntu/e-commerce"
-    bashas "cp nginx.default /etc/nginx/sites-enabled/"
-    bashas "pip3 install -r requirements.txt"
+    bashas "cp /home/ubuntu/e-commerce/nginx.default /etc/nginx/sites-enabled/"
+    bashas "pip3 install -r /home/ubuntu/e-commerce/requirements.txt"
 
     printInfo "Install Docker"
     apt install docker.io -y

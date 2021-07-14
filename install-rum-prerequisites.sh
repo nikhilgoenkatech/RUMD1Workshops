@@ -19,11 +19,11 @@ dockerInstall() {
 downloadStandAloneSetup() {
   if [ "$standalone_deployment" = true ]; then
     printInfoSection "Installing Standalone pre-requisites"
-    apt install python3-pip
-    apt  install nginx
-    apt install gunicorn 
+    apt install python3-pip -y
+    apt install nginx -y
+    apt install gunicorn -y 
     apt-get remove libapache2-mod-python libapache2-mod-wsgi
-    apt-get install libapache2-mod-wsgi-py3
+    apt-get install libapache2-mod-wsgi-py3 -y
     bashas "pip3 install uwsgi"
 
     bashas "pip3 install gunicorn==19.7.1"

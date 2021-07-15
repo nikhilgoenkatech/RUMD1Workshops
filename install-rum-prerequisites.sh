@@ -24,15 +24,16 @@ downloadStandAloneSetup() {
     apt install gunicorn -y 
     apt-get remove libapache2-mod-python libapache2-mod-wsgi
     apt-get install libapache2-mod-wsgi-py3 -y
-    bashas "pip3 install uwsgi"
+    pip3 install uwsgi
 
-    bashas "pip3 install gunicorn==19.7.1"
-    bashas "pip3 install autodynatrace"
-    bashas "pip3 uninstall Django -y"
-    bashas "pip3 install Django==2.2.10"
+    pip3 install gunicorn==19.7.1
+    pip3 install autodynatrace
+    pip3 uninstall Django -y
+    pip3 install Django==2.2.10
 
-    bashas "cp /home/ubuntu/e-commerce/nginx.default /etc/nginx/sites-enabled/"
-    bashas "pip3 install -r /home/ubuntu/e-commerce/requirements.txt"
+    cp /home/ubuntu/e-commerce/nginx.default /etc/nginx/sites-enabled/
+    pip3 install -r /home/ubuntu/e-commerce/requirements.txt
+    printInfoSection "Installed Standalone pre-requisites"
 
     printInfo "Install Docker"
     apt install docker.io -y

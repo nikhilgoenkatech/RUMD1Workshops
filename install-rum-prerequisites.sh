@@ -31,8 +31,11 @@ downloadStandAloneSetup() {
     pip3 uninstall Django -y
     pip3 install Django==2.2.10
 
-    cp /home/ubuntu/e-commerce/nginx.default /etc/nginx/sites-enabled/
-    pip3 install -r /home/ubuntu/e-commerce/requirements.txt
+    cp $RETAILAPP_DIR/nginx.default /etc/nginx/sites-enabled/default
+    pip3 install -r $RETAILAPP_DIR/requirements.txt
+    
+    python3.6 manage.py collectstatic --noinput
+    cp -r $RETAILAPP_DIR/src/static /static/
     printInfoSection "Installed Standalone pre-requisites"
 
     printInfo "Install Docker"

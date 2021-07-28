@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile_sample-bank
       context: .
       args:
-       - DT_RELEASE_VERSION=${DT_RELEASE_VERSION}
+       - BUILD_NO=${BUILD_NO}
     ports:
       - '3010:3000'
     external_links:
@@ -21,7 +21,7 @@ services:
       dockerfile: Dockerfile_sample-bank_latest
       context: .
       args:
-       - BUILD_NO=${BUILD_NO}
+       - DT_RELEASE_VERSION=${DT_RELEASE_VERSION}
     ports:
       - '3008:3000'
     external_links:

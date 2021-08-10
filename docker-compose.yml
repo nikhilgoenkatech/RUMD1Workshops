@@ -3,13 +3,13 @@ services:
   app:
     container_name: sample-bank
     restart: always
-    build: .
+    image: nikhilgoenka/samplebank-nginx:blue
     ports:
       - '3000:3000'
     external_links:
       - mongo
   mongo:
     container_name: mongo
-    image: mongo
+    image: nikhilgoenka/mongo
     ports:
       - '27017:27017'

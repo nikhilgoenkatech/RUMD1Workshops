@@ -4,6 +4,9 @@ RUMD1WRKSHP_DIR="~/docker-compose-bankApp"
 RETAILAPP_REPO="https://github.com/nikhilgoenkatech/retailapp.git"
 RETAILAPP_DIR="~/e-commerce"
 
+BANKAPP_REPO="https://github.com/nikhilgoenkatech/Bank-Sample-app.git"
+BANKAPP_DIR="~/Bank-Sample-app"
+
 dockerInstall() {
   if [ "$docker_install" = true ]; then
     printInfoSection "Installing Docker and J Query"
@@ -175,6 +178,9 @@ resources_clone(){
     
     printInfoSection "Clone RETAILAPP_REPO Resources in $RETAILAPP_DIR"
     bashas "sudo git clone $RETAILAPP_REPO $RETAILAPP_DIR"
+    
+    printInfoSection "Clone BANKAPP_REPO Resources in $BANKAPP_DIR"
+    bashas "sudo git clone $BANKAPP_REPO $BANKAPP_DIR"    
   fi
 }
 createWorkshopUser() {

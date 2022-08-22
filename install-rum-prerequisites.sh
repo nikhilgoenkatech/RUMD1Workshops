@@ -185,7 +185,7 @@ resources_clone(){
     printInfoSection "Clone BANKAPP_REPO Resources in $BANKAPP_DIR"
     bashas "sudo git clone $BANKAPP_REPO $BANKAPP_DIR"    
     
-    printInfoSection "Clone OTEL_REPO Resources in $OTEL_DIR
+    printInfoSection "Clone OTEL_REPO Resources in $OTEL_DIR"
     bashas "sudo git clone $OTEL_REPO $OTEL_DIR" 
   fi
 }

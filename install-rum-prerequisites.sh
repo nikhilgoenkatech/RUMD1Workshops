@@ -7,6 +7,9 @@ RETAILAPP_DIR="~/e-commerce"
 BANKAPP_REPO="https://github.com/nikhilgoenkatech/Bank-Sample-app.git"
 BANKAPP_DIR="~/Bank-Sample-app"
 
+OTEL_REPO="https://github.com/nikhilgoenkatech/Otel-sample-code.git"
+OTEL_DIR="~/otel"
+
 dockerInstall() {
   if [ "$docker_install" = true ]; then
     printInfoSection "Installing Docker and J Query"
@@ -181,6 +184,9 @@ resources_clone(){
     
     printInfoSection "Clone BANKAPP_REPO Resources in $BANKAPP_DIR"
     bashas "sudo git clone $BANKAPP_REPO $BANKAPP_DIR"    
+    
+    printInfoSection "Clone OTEL_REPO Resources in $OTEL_DIR
+    bashas "sudo git clone $OTEL_REPO $OTEL_DIR" 
   fi
 }
 createWorkshopUser() {
